@@ -1,0 +1,139 @@
+{% extends 'PagesAdmin/index.html' %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">Ajouter Un Enseignant</h4>
+    {% if messages %}
+      {% for message in messages  %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+          {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <div class="row">
+      
+      <!-- Basic with Icons -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Veuillez Remplir Les champs</h5>
+          </div>
+        
+          <div class="card-body">
+            <form action="{% url 'New_enseignant' %}" method="post">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nom</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    {{form.first_name}}
+                    <span class="danger">{{form.first_name.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Prenom</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-fullname2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    {{form.last_name}}
+                    <span class="danger">{{form.last_name.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Nom d'utilisateur</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-company2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    {{form.username}}
+                    <span class="danger">{{form.username.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Date de Naissance</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-company2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                   {{form.date}}
+                   <span class="danger">{{form.date.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Email</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                    {{form.email}}
+                    <span class="danger">{{form.email.error}}</span>
+                    <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 form-label" for="html5-number-input"> No Enseignant</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-phone2" class="input-group-text"
+                      ><i class="bx bx-user"></i
+                    ></span>
+                    {{form.number}}
+                    <span class="danger">{{form.number.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 form-label" for="basic-default-password12">Mot De Passe</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-message2" class="input-group-text"
+                      ><i class="bx bx-lock-alt"></i
+                    ></span>
+                    {{form.password1}}
+                    <span class="danger">{{form.password1.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 form-label" for="basic-default-password12">Confirmer le mot de Passe</label>
+                <div class="col-sm-10">
+                  <div class="input-group input-group-merge">
+                    <span id="basic-icon-default-message2" class="input-group-text"
+                      ><i class="bx bx-lock-alt"></i
+                    ></span>
+                    {{form.password2}}
+                    <span class="danger">{{form.password2.error}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
