@@ -51,14 +51,5 @@ class ProjetForm(forms.ModelForm):
             }
         ),
     )
-    statut = forms.ChoiceField(
-        
-        widget=forms.TextInput(
-            attrs={
-               
-                'class': 'form-control',
-            }
-        ),
-    )
-        
+   
     

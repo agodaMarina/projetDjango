@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect,get_object_or_404
-from .models import Projet
+from .models import Projet, FichierDeSoumission
 from .forms import ProjetForm, FichierDeSoumissionForm
 
 
@@ -21,6 +21,13 @@ def projet_create(request):
     return render(request, 'app/createProjet.html', {'form': form})
 
 
+def projet_liste(request):
+    projet = Projet.objects.all()
+    return render(request, 'PagesEtudiants/ListeCours.html', {'projet': projet})
+
+def fichier_liste(request):
+    s = FichierDeSoumission.objects.all()
+    return render(request, 'PagesEnseignants/ListeSoumission.html', {'projet': s})
 
 
 def fichier_create(request):
@@ -34,7 +41,7 @@ def fichier_create(request):
             return redirect('PagesEtudiants/dashboard.html')
 
     else:
-        form = ProjetForm()
+        form = FichierDeSoumissionForm()
 
     return render(request, 'app/createSoumis.html', {'form': form})
 

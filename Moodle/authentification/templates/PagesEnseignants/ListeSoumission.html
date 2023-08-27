@@ -88,7 +88,7 @@
                           </div>
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block">{{user.first_name}} {{user.last_name}}</span>
-                            <small class="text-muted">Enseignant</small>
+                            <small class="text-muted">Etudiant</small>
                           </div>
                         </div>
                       </a>
@@ -124,20 +124,21 @@
             <!-- Content -->
             {% block content %}
               <div class="container-xxl flex-grow-1 container-p-y">
+                <h3>Voici la liste des devoirs soumis Par vos etudiants</h3>
                 <!-- Layout Demo -->
-                                 <h4>Liste des cours que vous dispenser</h4>
+                  {% for c in projet %}         
                   <div class="card mb-4">
                     <div class="card-body">
-                      <h5 class="card-title">Djnago</h5>
+                      <h5 class="card-title"> {{c.libelle}} </h5>
                       <div class="card-subtitle text-muted mb-3"></div>
-                      <p class="card-text">
-                        Vous dispensez ce cours ,<br>Vous pourrez créer un projet pour vos etudiants
-                      </p>
-                      <a href="{% url 'projet' %}" class="card-link">Créez un projet pour ce Cours</a>
-                      <a href="{% url 'listedevoir' %}" class="card-link">Voir Les soumissions</a>
+                      
+                        <a href="{{c.fichier}}">Telecharger le projet</a> <br>
+                     
+                      <a href="{% url 'devoir' %}" class="card-link">Noté le devoir</a>
                     
                     </div>
                   </div>
+                  {% endfor %}      
                  
               </div>
               <!-- / Content -->
@@ -156,7 +157,7 @@
               <!-- / Footer -->
 
               <div class="content-backdrop fade"></div>
-            {% endblock %}
+         {% endblock  %}
           </div>
           <!-- Content wrapper -->
         </div>

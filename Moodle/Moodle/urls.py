@@ -35,6 +35,10 @@ urlpatterns = [
     path('enseignant/liste/', authentification.views.ReadEnseignant, name='liste_enseignant'),
     path('enseignant/update/', authentification.views.updateEnseignant, name='updateEnseignant'),
     path('enseignant/delete/<int:id>/', authentification.views.deleteEnseignant, name='deleteEnseignant'),
+    path('soumission/', app.views.fichier_create, name='devoir'),
+    path('projet/', app.views.projet_create, name='projet'),
+    path('listeprojet/', app.views.projet_liste, name='listeProjet'),
+    path('listedevoir/', app.views.fichier_liste, name='listedevoir'),
     path('logout/', authentification.views.Deconnxion, name='logout'),
     path('acceuil/', authentification.views.acceuil, name='home'),
 ]
